@@ -12,6 +12,7 @@ angular.module 'client-main',['ngRoute']
    $scope.floor = Math.floor
    $scope.opened=[]
    $scope.booked ={}
+   $scope.username = 'Florent BEAUCHAMP'
    $scope.selected =
       day:null
       halfhour:null
@@ -22,7 +23,6 @@ angular.module 'client-main',['ngRoute']
      $scope.selected.day = day
      $scope.selected.halfhour = halfhour
      $scope.selected.index = index
-     $scope.username=''
 
    $scope.confirm = ->
      console.log  'serveur non implementé'

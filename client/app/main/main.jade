@@ -11,6 +11,11 @@ table.table.table-striped.table-condensed.planning
                 ng-if="opened[day][halfhour]==true"
                 ng-click="opened[day][halfhour]=false"
                 ) Ouvert
+            a.btn.btn-primary(
+                ng-repeat="booking in booked[day][halfhour]",
+                data-toggle="modal",
+                data-target="#cancelBookingmodal"
+            ) {{booking }}
             a.btn.btn-danger.btn-block(
                 href="javascript:void(0)"
                 ng-if="!opened[day][halfhour]"
@@ -26,26 +31,26 @@ table.table.table-striped.table-condensed.planning.book
     tr(ng-repeat="halfhour in halfhours")
         th {{floor(halfhour/2)}}:{{halfhour%2==0 ? '00':'30'}}
         td(ng-repeat="day in days")
-            div.btn-group.btn-group-justified(ng-if="opened[day][halfhour]==true")
+            div(ng-if="opened[day][halfhour]==true")
 
-                 a.btn.btn-primary(
+                 a.btn.btn-primary.btn-block(
                     ng-if="!booked[day][halfhour][0]",
                     ng-click="book(day,halfhour,0)",
                     data-toggle="modal",
-                    data-target="#myModal"
+                    data-target="#bookingModal"
                     ) M'inscrire
-                 a.btn.btn-default(
+                 a.btn.btn-default.btn-block(
                     disabled=true,
                     ng-if="booked[day][halfhour][0]"
                     ) {{booked[day][halfhour][0]}}
 
-                 a.btn.btn-primary(
+                 a.btn.btn-primary.btn-block(
                      ng-if="!booked[day][halfhour][1]",
                      ng-click="book(day,halfhour,1)",
                      data-toggle="modal",
-                     data-target="#myModal"
+                     data-target="#bookingModal"
                      ) M'inscrire
-                 a.btn.btn-default(
+                 a.btn.btn-default.btn-block(
                      disabled=true,
                      ng-if="booked[day][halfhour][1]"
                      ) {{booked[day][halfhour][1]}}
@@ -53,7 +58,19 @@ table.table.table-striped.table-condensed.planning.book
 
 
 
-#myModal.modal
+#cancelBookingmodal.modal
+    .modal-dialog
+        .modal-content
+            .modal-header
+                button.close(type="button",class="close",data-dismiss="modal",aria-hidden="true") ×
+                h4.modal-title Annuler la reservation de {{username}} le {{selected.day}} a {{floor(selected.halfhour/2)}}:{{selected.halfhour%2==0 ? '00':'30'}} ?
+            .modal-body
+                p ici le text qui explique qu'il ne faut pas oublier de le dire à la personne quand même
+            .modal-footer
+                button.btn.btn-default(type="button",data-dismiss="modal") Fermer sans annuler
+                button.btn.btn-danger(type="button",data-dismiss="modal",ng-click="cancel()") Confirmer l'annulation
+
+#bookingModal.modal
     .modal-dialog
         .modal-content
             .modal-header

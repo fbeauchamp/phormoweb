@@ -27,6 +27,7 @@ angular.module('client-main', ['ngRoute']).config(function($routeProvider) {
   $scope.floor = Math.floor;
   $scope.opened = [];
   $scope.booked = {};
+  $scope.username = 'Florent BEAUCHAMP';
   $scope.selected = {
     day: null,
     halfhour: null,
@@ -36,8 +37,7 @@ angular.module('client-main', ['ngRoute']).config(function($routeProvider) {
     console.log(" on s'inscrit a " + day + ' ' + halfhour + ' ' + index);
     $scope.selected.day = day;
     $scope.selected.halfhour = halfhour;
-    $scope.selected.index = index;
-    return $scope.username = '';
+    return $scope.selected.index = index;
   };
   return $scope.confirm = function() {
     var _base, _base1, _name, _name1;
