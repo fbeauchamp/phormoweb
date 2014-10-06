@@ -1,0 +1,15 @@
+{
+  "name": "phormoweb-server",
+  "version": "0.0.1",
+  "description": "client web pour morphoweb",
+  "author": "Florent BEAUCHAMP <fbeauchamp@sdis71.fr>",
+  "dependencies": {
+    "express": "~4.9.5"
+  },
+  "devDependencies": {},
+  "preferGlobal": false,
+  "private": true,
+  "subdomain": "foobar",
+  "analyze": true,
+  "license": "GPL"
+}

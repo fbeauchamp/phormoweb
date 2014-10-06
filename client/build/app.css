@@ -1,0 +1,14 @@
+.planning .btn,
+.planning th {
+  margin: 0;
+  width: 200px;
+  text-align: center;
+}
+.planning.book .btn-group {
+  width: 200px;
+}
+.planning.book .btn {
+  width: 80px;
+  padding-left: 0;
+  padding-right: 0;
+}
